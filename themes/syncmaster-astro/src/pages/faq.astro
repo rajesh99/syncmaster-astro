@@ -1,0 +1,29 @@
+---
+import Base from "@/layouts/Base.astro";
+import { getListPage } from "@/lib/contentParser.astro";
+import CallToAction from "@/partials/CallToAction.astro";
+import FaqAccordion from "@/partials/FaqAccordion.astro";
+import PageHeader from "@/partials/PageHeader.astro";
+
+const faqIndex = await getListPage("faq", "-index");
+if (faqIndex.data.draft) {
+  return Astro.redirect("/404");
+}
+const { title, content, meta_title, description } = faqIndex.data;
+---
+
+<Base title={title} meta_title={meta_title} description={description}>
+  <PageHeader title={title} content={content} />
+
+  <section class="-mt-20">
+    <div class="container">
+      <div class="row justify-center">
+        <div class="col-12 lg:col-7 mb-14">
+          <FaqAccordion />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction />
+</Base>
