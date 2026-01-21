@@ -18,6 +18,87 @@ hero:
       - "/images/home/4.png"
     note: "✓ GetJobber Integration • ✓ 5-Minute Setup • ✓ No Credit Card Required • ✓ 14-Day Free Trial"
 
+feature:
+  title: "Built for Follow-Ups That Actually Get Sent"
+  subtitle: "Automations that run in the background—so your team doesn’t have to."
+  features:
+    - title: "Triggers"
+      badge: "✅ Real GetJobber Events"
+      content: "Send the right email at the right moment"
+      description: "Automatically trigger follow-ups when jobs complete, estimates go out, invoices become overdue, or new clients are added."
+      image: "/images/home/banner.png"
+      button:
+        enable: true
+        label: "See How It Works"
+        link: "#how-it-works"
+    - title: "Rules"
+      badge: "✅ Conditional Logic"
+      content: "Only send when it makes sense"
+      description: "Add conditions like job value, customer type, service category, or invoice age to keep emails relevant (and avoid spam)."
+      image: "/images/home/banner.png"
+      button:
+        enable: true
+        label: "View Use Cases"
+        link: "#use-cases"
+    - title: "Templates"
+      badge: "✅ Professional Emails"
+      content: "Look polished without writing from scratch"
+      description: "Start from proven templates and customize with your branding. Insert GetJobber data like names, amounts, and job details."
+      image: "/images/home/banner.png"
+      button:
+        enable: true
+        label: "See Pricing"
+        link: "/pricing"
+    - title: "Reliability"
+      badge: "✅ Always On"
+      content: "Consistent follow-up, every time"
+      description: "No more relying on memory, sticky notes, or spreadsheets. MultiNudge runs automatically so nothing slips through the cracks."
+      image: "/images/home/banner.png"
+      button:
+        enable: false
+        label: "Learn More"
+        link: "/"
+
+offering:
+  - title: "Connect Once. Automate Forever."
+    subtitle: "5-minute setup"
+    image: "/images/home/banner.png"
+    image_1: "/images/home/banner.png"
+    content: "MultiNudge connects to GetJobber and starts sending emails automatically based on the rules you set."
+    points:
+      - "One-click OAuth connection"
+      - "No code, no Zapier, no spreadsheets"
+      - "Turn automations on/off anytime"
+  - title: "Keep Your Brand (and Your Voice)"
+    subtitle: "Your templates"
+    image: "/images/home/banner.png"
+    image_1: "/images/home/banner.png"
+    content: "Use our templates as-is or customize them so every message feels like it came from your team."
+    points:
+      - "Professional starting templates"
+      - "Custom branding and messaging"
+      - "Dynamic GetJobber data insertion"
+
+benefits:
+  title: "What You Get Back"
+  subtitle: "Save time, protect revenue, and reduce the mental load."
+  points:
+    - title: "Hours Every Week"
+      content: "Eliminate repetitive follow-ups so your team can focus on real work."
+      image: "/images/home/banner.png"
+    - title: "More Closed Estimates"
+      content: "Consistent follow-ups revive cold quotes and increase conversions."
+      image: "/images/home/banner.png"
+    - title: "Faster Payments"
+      content: "Automatic overdue reminders help you get paid sooner—without awkward manual chasing."
+      image: "/images/home/banner.png"
+    - title: "A Consistent Customer Experience"
+      content: "Every customer gets the right message at the right time, automatically."
+      image: "/images/home/banner.png"
+    - title: "Peace of Mind"
+      content: "No more guilt or “did we follow up?” uncertainty. It’s handled."
+      image: "/images/home/banner.png"
+
 problem:
   title: "Your Team Shouldn't Be Doing This"
   left_column:
