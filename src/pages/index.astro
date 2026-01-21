@@ -1,25 +1,41 @@
 ---
 import Benefits from "@/components/home/Benefits.astro";
+import CurrentFeatures from "@/components/home/CurrentFeatures.astro";
 import Features from "@/components/home/Features.astro";
+import FinalCta from "@/components/home/FinalCta.astro";
 import Hero from "@/components/home/Hero.astro";
+import HomeFaq from "@/components/home/HomeFaq.astro";
+import HowItWorks from "@/components/home/HowItWorks.astro";
 import Offering from "@/components/home/Offering.astro";
 import Plans from "@/components/home/Plans.astro";
+import Problem from "@/components/home/Problem.astro";
+import Solution from "@/components/home/Solution.astro";
+import UseCases from "@/components/home/UseCases.astro";
+import WhatYouSave from "@/components/home/WhatYouSave.astro";
 import Base from "@/layouts/Base.astro";
 import { getListPage } from "@/lib/contentParser.astro";
 import CallToAction from "@/partials/CallToAction.astro";
 import Testimonial from "@/partials/Testimonial.astro";
 
 const homepage = await getListPage("homepage", "-index");
-const { hero, feature, offering, benefits, plan } = homepage.data;
+const { hero, feature, offering, benefits, plan, problem, solution, how_it_works, use_cases, current_features, what_you_save, faq, final_cta } = homepage.data;
 ---
 
 <Base>
   <Hero {hero} />
+  <Problem problem={problem} />
+  <Solution solution={solution} />
+  <HowItWorks how_it_works={how_it_works} />
+  <UseCases use_cases={use_cases} />
+  <CurrentFeatures current_features={current_features} />
+  <WhatYouSave what_you_save={what_you_save} />
   <Features {feature} />
   <Offering {offering} />
   <Benefits {benefits} />
   <Testimonial />
   <Plans plan={plan} />
+  <HomeFaq faq={faq} />
+  <FinalCta final_cta={final_cta} />
 
   <CallToAction />
 </Base>

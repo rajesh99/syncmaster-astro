@@ -244,6 +244,128 @@ const homepageCollection = defineCollection({
         }),
       ),
     }),
+    problem: z.object({
+      title: z.string(),
+      left_column: z.object({
+        title: z.string(),
+        sections: z.array(
+          z.object({
+            title: z.string(),
+            items: z.array(z.string()),
+          }),
+        ),
+      }),
+      right_column: z.object({
+        title: z.string(),
+        sections: z.array(
+          z.object({
+            title: z.string(),
+            items: z.array(z.string()),
+          }),
+        ),
+      }),
+    }).optional(),
+    solution: z.object({
+      title: z.string(),
+      content: z.string(),
+      columns: z.array(
+        z.object({
+          title: z.string(),
+          items: z.array(z.string()),
+        }),
+      ),
+    }).optional(),
+    how_it_works: z.object({
+      title: z.string(),
+      steps: z.array(
+        z.object({
+          step_number: z.number(),
+          title: z.string(),
+          time: z.string(),
+          description: z.string().optional(),
+          sections: z.array(
+            z.object({
+              title: z.string().optional(),
+              items: z.array(z.string()),
+            }),
+          ).optional(),
+        }),
+      ),
+    }).optional(),
+    use_cases: z.object({
+      title: z.string(),
+      summary: z.object({
+        time_saved: z.string(),
+        revenue_protected: z.string(),
+        cost_saved: z.string(),
+      }).optional(),
+      cases: z.array(
+        z.object({
+          title: z.string(),
+          manual_way: z.object({
+            description: z.string().optional(),
+            items: z.array(z.string()),
+            time: z.string(),
+          }),
+          multinudge_way: z.object({
+            trigger: z.string(),
+            condition: z.string(),
+            action: z.string(),
+            result: z.string(),
+          }),
+          impact: z.string().optional(),
+          revenue_impact: z.string().optional(),
+          time_saved: z.string(),
+        }),
+      ),
+    }).optional(),
+    current_features: z.object({
+      title: z.string(),
+      features: z.array(
+        z.object({
+          title: z.string(),
+          items: z.array(z.string()),
+        }),
+      ),
+    }).optional(),
+    what_you_save: z.object({
+      title: z.string(),
+      columns: z.array(
+        z.object({
+          title: z.string(),
+          subtitle: z.string().optional(),
+          sections: z.array(
+            z.object({
+              title: z.string().optional(),
+              items: z.array(z.string()),
+            }),
+          ),
+          highlight: z.string().optional(),
+        }),
+      ),
+    }).optional(),
+    faq: z.object({
+      title: z.string(),
+      questions: z.array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        }),
+      ),
+    }).optional(),
+    final_cta: z.object({
+      title: z.string(),
+      content: z.string(),
+      primary_button: z.object({
+        label: z.string(),
+        link: z.string(),
+      }),
+      secondary_text: z.string().optional(),
+      secondary_button: z.object({
+        label: z.string(),
+        link: z.string(),
+      }).optional(),
+    }).optional(),
   }),
 });
 

@@ -1,0 +1,68 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+import Button from "@/shortcodes/Button";
+
+type Props = {
+  final_cta: CollectionEntry<"homepage">["data"]["final_cta"];
+}
+const { final_cta } = Astro.props;
+
+if (!final_cta) {
+  return null;
+}
+---
+
+<section class="section bg-primary">
+  <div class="container">
+    <div class="row justify-center">
+      <div class="col-12 sm:col-10 lg:col-8 text-center">
+        <h2
+          set:html={markdownify(final_cta.title)}
+          class="lg:h1 mb-6 text-light"
+          data-aos="fade-up-sm"
+        />
+        <p
+          set:html={markdownify(final_cta.content)}
+          class="text-lg mb-8 text-light/90"
+          data-aos="fade-up-sm"
+          data-aos-delay="100"
+        />
+        
+        <div
+          class="flex flex-col sm:flex-row justify-center gap-4 mb-6"
+          data-aos="fade-up-sm"
+          data-aos-delay="200"
+        >
+          <Button
+            label={final_cta.primary_button.label}
+            link={final_cta.primary_button.link}
+            style="light"
+            className="w-fit mx-auto sm:mx-0"
+          />
+        </div>
+        
+        {final_cta.secondary_text && (
+          <p
+            set:html={markdownify(final_cta.secondary_text)}
+            class="text-sm text-light/70 mb-4"
+            data-aos="fade-up-sm"
+            data-aos-delay="300"
+          />
+        )}
+        
+        {final_cta.secondary_button && (
+          <div data-aos="fade-up-sm" data-aos-delay="400">
+            <Button
+              label={final_cta.secondary_button.label}
+              link={final_cta.secondary_button.link}
+              style="ghost"
+              className="text-light hover:text-secondary"
+            />
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+

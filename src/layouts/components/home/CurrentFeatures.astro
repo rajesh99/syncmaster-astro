@@ -1,0 +1,55 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  current_features: CollectionEntry<"homepage">["data"]["current_features"];
+}
+const { current_features } = Astro.props;
+
+if (!current_features) {
+  return null;
+}
+---
+
+<section class="section">
+  <div class="container">
+    <div class="row justify-center mb-12">
+      <div class="col-12 sm:col-10 text-center">
+        <h2
+          set:html={markdownify(current_features.title)}
+          class="lg:h1 mb-4"
+          data-aos="fade-up-sm"
+        />
+      </div>
+    </div>
+    
+    <div class="row g-6">
+      {
+        current_features.features.map((feature, index) => (
+          <div class="col-12 md:col-6 lg:col-4">
+            <div
+              class="bg-light rounded-3xl p-6 sm:p-8 h-full"
+              data-aos="fade-up-sm"
+              data-aos-delay={index * 50}
+            >
+              <h3
+                set:html={markdownify(feature.title)}
+                class="text-xl font-bold mb-4"
+              />
+              <ul class="space-y-2">
+                {feature.items.map((item) => (
+                  <li class="flex items-start gap-3">
+                    <div class="mt-2 rounded-full aspect-square w-2 bg-secondary shrink-0" />
+                    <span class="text-sm">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+

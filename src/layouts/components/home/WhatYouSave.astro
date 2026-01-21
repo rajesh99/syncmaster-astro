@@ -1,0 +1,83 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  what_you_save: CollectionEntry<"homepage">["data"]["what_you_save"];
+}
+const { what_you_save } = Astro.props;
+
+if (!what_you_save) {
+  return null;
+}
+---
+
+<section class="section bg-primary">
+  <div class="container">
+    <div class="row justify-center mb-12">
+      <div class="col-12 sm:col-10 text-center">
+        <h2
+          set:html={markdownify(what_you_save.title)}
+          class="lg:h1 mb-4 text-light"
+          data-aos="fade-up-sm"
+        />
+      </div>
+    </div>
+    
+    <div class="row g-6">
+      {
+        what_you_save.columns.map((column, index) => (
+          <div class="col-12 md:col-6 lg:col-4">
+            <div
+              class="bg-light/10 rounded-3xl p-6 sm:p-8 h-full"
+              data-aos="fade-up-sm"
+              data-aos-delay={index * 100}
+            >
+              <h3
+                set:html={markdownify(column.title)}
+                class="text-2xl font-bold mb-2 text-light"
+              />
+              {column.subtitle && (
+                <p
+                  set:html={markdownify(column.subtitle)}
+                  class="text-lg font-semibold mb-6 text-light/80"
+                />
+              )}
+              
+              {
+                column.sections.map((section) => (
+                  <div class="mb-6 last:mb-0">
+                    {section.title && (
+                      <h4
+                        set:html={markdownify(section.title)}
+                        class="text-lg font-semibold mb-3 text-light"
+                      />
+                    )}
+                    <ul class="space-y-2">
+                      {section.items.map((item) => (
+                        <li class="flex items-start gap-3 text-light/90">
+                          <div class="mt-2 rounded-full aspect-square w-2 bg-secondary shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              }
+              
+              {column.highlight && (
+                <div class="mt-6 pt-6 border-t border-light/20">
+                  <p
+                    set:html={markdownify(column.highlight)}
+                    class="text-lg font-bold text-secondary"
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
