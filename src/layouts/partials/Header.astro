@@ -3,6 +3,7 @@ import Logo from "@/components/Logo.astro";
 import config from "@/config/config.json";
 import menu from "@/config/menu.json";
 import Button from "@/shortcodes/Button";
+import Button2 from "@/shortcodes/Button2";
 
 export interface ChildNavigationLink {
   name: string;
@@ -16,7 +17,7 @@ export interface NavigationLink {
   children?: ChildNavigationLink[];
 }
 
-const { navigation_button, settings } = config;
+const { navigation_button, navigation_button2, settings } = config;
 const { pathname } = Astro.url;
 
 const { customHeader } = Astro.props;
@@ -123,17 +124,39 @@ const { customHeader } = Astro.props;
           </li>
         )
       }
+      {
+        navigation_button2.enable && (
+          <li class="mt-4 inline-block lg:hidden">
+            <Button
+              className="btn-sm"
+              style="secondary"
+              link={navigation_button2.link}
+              label={navigation_button2.label}
+            />
+          </li>
+        )
+      }
     </ul>
 
     <div class="order-1 ml-auto flex items-center md:order-2">
       <!-- Navigation button -->
       {
         navigation_button.enable && (
-          <Button
-            className={`hidden lg:inline-block ${customHeader && "!bg-tertiary !text-text-dark"}`}
-            style="secondary"
+          <Button2
+            className={`hidden lg:inline-flex ${customHeader && "!bg-white !text-text-dark !border-[#e5e5e5]"}`}
             link={navigation_button.link}
             label={navigation_button.label}
+            style="outline"
+          />
+        )
+      }
+      {
+        navigation_button2.enable && (
+          <Button2
+            className={`hidden lg:inline-flex ml-2 ${customHeader && "!bg-primary !text-primary-foreground !border-primary"}`}
+            link={navigation_button2.link}
+            label={navigation_button2.label}
+            style="primary"
           />
         )
       }

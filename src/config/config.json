@@ -32,9 +32,15 @@
   },
 
   "navigation_button": {
-    "enable": false,
-    "label": "Get This Template",
-    "link": "https://themefisher.com/products/syncmaster-astro"
+    "enable": true,
+    "label": "Sign in",
+    "link": "https://app.multinudge.com/auth/sign-in"
+  },
+
+  "navigation_button2": {
+    "enable": true,
+    "label": "Sign up",
+    "link": "https://app.multinudge.com/auth/sign-up"
   },
 
   "google_tag_manager": {
