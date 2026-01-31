@@ -426,7 +426,7 @@ final_cta:
   secondary_text: "No credit card required • Full access to all features • Cancel anytime"
   secondary_button:
     label: "Or Schedule a 15-Minute Demo"
-    link: "/contact"
+    link: "/contact-us"
 
 plan:
   title: "Simple, Transparent Pricing"
