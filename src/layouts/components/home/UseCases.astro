@@ -1,0 +1,121 @@
+---
+import { markdownify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  use_cases: CollectionEntry<"homepage">["data"]["use_cases"];
+}
+const { use_cases } = Astro.props;
+
+if (!use_cases) {
+  return null;
+}
+---
+
+<section class="section bg-tertiary">
+  <div class="container">
+    <div class="row justify-center mb-12">
+      <div class="col-12 sm:col-10 text-center">
+        <h2
+          set:html={markdownify(use_cases.title)}
+          class="lg:h1 mb-4"
+          data-aos="fade-up-sm"
+        />
+      </div>
+    </div>
+    
+    <div class="row g-6">
+      {
+        use_cases.cases.map((useCase, index) => (
+          <div class="col-12 lg:col-6">
+            <div
+              class="use-case-card bg-body rounded-3xl p-6 sm:p-8 h-full"
+              data-aos="fade-up-sm"
+              data-aos-delay={index * 100}
+            >
+              <h3
+                set:html={markdownify(useCase.title)}
+                class="text-2xl font-bold mb-6"
+              />
+              
+              <!-- Manual Way -->
+              <div class="mb-6 pb-6 border-b border-border/20">
+                <h4 class="text-lg font-semibold mb-3 text-text-dark/70">Manual Way:</h4>
+                {useCase.manual_way.description && (
+                  <p class="mb-3 text-sm text-text-dark/70">{useCase.manual_way.description}</p>
+                )}
+                <ul class="space-y-2 mb-3">
+                  {useCase.manual_way.items.map((item) => (
+                    <li class="flex items-start gap-3 text-sm">
+                      <div class="mt-2 rounded-full aspect-square w-2 bg-text-dark/30 shrink-0" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p class="text-sm font-semibold text-text-dark/70">
+                  Time: {useCase.manual_way.time}
+                </p>
+              </div>
+              
+              <!-- MultiNudge Way -->
+              <div class="mb-6 pb-6 border-b border-border/20">
+                <h4 class="text-lg font-semibold mb-3 text-primary">MultiNudge Way:</h4>
+                <div class="bg-primary/5 rounded-lg p-4 space-y-2 text-sm font-mono">
+                  <p><strong>TRIGGER:</strong> {useCase.multinudge_way.trigger}</p>
+                  <p><strong>CONDITION:</strong> {useCase.multinudge_way.condition}</p>
+                  <p><strong>ACTION:</strong> {useCase.multinudge_way.action}</p>
+                  <p><strong>RESULT:</strong> {useCase.multinudge_way.result}</p>
+                </div>
+              </div>
+              
+              <!-- Impact -->
+              <div>
+                {useCase.impact && (
+                  <p class="mb-2">
+                    <strong>Impact:</strong> {useCase.impact}
+                  </p>
+                )}
+                {useCase.revenue_impact && (
+                  <p class="mb-2 text-primary font-semibold">
+                    {useCase.revenue_impact}
+                  </p>
+                )}
+                <p class="text-sm font-semibold">
+                  Time saved: {useCase.time_saved}
+                </p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+    
+    {use_cases.summary && (
+      <div class="row justify-center mt-12">
+        <div class="col-12 lg:col-10">
+          <div
+            class="bg-primary text-light rounded-3xl p-6 sm:p-8 text-center"
+            data-aos="fade-up-sm"
+          >
+            <h3 class="text-2xl font-bold mb-4">Summary</h3>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+              <div>
+                <p class="text-sm opacity-80 mb-1">Total Time Saved</p>
+                <p class="text-xl font-bold">{use_cases.summary.time_saved}</p>
+              </div>
+              <div>
+                <p class="text-sm opacity-80 mb-1">Total Revenue Protected</p>
+                <p class="text-xl font-bold">{use_cases.summary.revenue_protected}</p>
+              </div>
+              <div>
+                <p class="text-sm opacity-80 mb-1">Cost Saved</p>
+                <p class="text-xl font-bold">{use_cases.summary.cost_saved}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
